@@ -5,4 +5,5 @@ fun main() {
     val purchaseMessage: String = "Благодарим за покупку"
     println("Количество заказов $numberOfOrders")
     println(purchaseMessage)
+
 }
