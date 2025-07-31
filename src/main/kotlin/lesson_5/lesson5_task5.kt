@@ -13,12 +13,11 @@ fun main() {
 
     for (message in messages) {
         randomNumbers.add(Random.nextInt(0, 42))
-        println(randomNumbers)
         print(message)
         userInputs.add(readln().toInt())
     }
+
     val numberOfMatches: Int = userInputs.intersect(randomNumbers).size
-    println(numberOfMatches)
 
     when (numberOfMatches) {
         randomNumbers.size -> println("Вы сорвали одежду, ой... То-есть джекпот! 3/3")
