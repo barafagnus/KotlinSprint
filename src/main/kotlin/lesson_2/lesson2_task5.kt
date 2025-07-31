@@ -10,5 +10,4 @@ fun main() {
 
     val result: Float = presentValue * (1 + (interestRate/100) / numberOfInterestApplied).pow(numberOfInterestApplied * timePeriods)
     println(String.format("%.3f", result))
-    // У меня получилось 1536439,875
 }
