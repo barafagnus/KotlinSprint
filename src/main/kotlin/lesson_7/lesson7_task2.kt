@@ -1,17 +1,10 @@
 fun main() {
-    var randomNumber = (1000..9999).random()
-    println("Ваш код авторизации: $randomNumber")
-
-    while (true) {
+    do {
+        val randomNumber = (1000..9999).random()
+        println("Ваш код авторизации: $randomNumber")
         print("Введите код авторизации: ")
         val code = readln().toInt()
-        if (code == randomNumber) {
-            println("Добро пожаловать")
-            break
+    } while (code != randomNumber)
 
-        } else {
-            randomNumber = (1000..9999).random()
-            println("Ваш код авторизации: $randomNumber")
-        }
-    }
+    println("Добро пожаловать")
 }
