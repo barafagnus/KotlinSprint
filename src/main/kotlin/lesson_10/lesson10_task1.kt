@@ -3,6 +3,7 @@ val NUMS = (1..6)
 fun main() {
     val player = rollTheDice()
     val computer = rollTheDice()
+
     when {
         player > computer -> println("Победило человечество")
         computer > player -> println("Победила машина")
@@ -10,6 +11,4 @@ fun main() {
     }
 }
 
-fun rollTheDice(): Int {
-    return NUMS.random()
-}
+fun rollTheDice(): Int = NUMS.random()
