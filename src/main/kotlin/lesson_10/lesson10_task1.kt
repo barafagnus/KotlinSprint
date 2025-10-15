@@ -1,5 +1,3 @@
-val NUMS = (1..6)
-
 fun main() {
     val player = rollTheDice()
     val computer = rollTheDice()
@@ -11,4 +9,5 @@ fun main() {
     }
 }
 
-fun rollTheDice(): Int = NUMS.random()
+val DICE_RANGE = 1..6
+fun rollTheDice(): Int = DICE_RANGE.random()
