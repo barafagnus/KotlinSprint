@@ -6,6 +6,8 @@ fun main() {
     for (ingredient in borschRecipe) {
         if (desiredIngredient == ingredient) {
             println("Ингредиент $desiredIngredient в рецепте есть")
-        } else println("Такого ингредиента в рецепте нет")
+            return
+        }
     }
+    println("Такого ингредиента в рецепте нет")
 }
