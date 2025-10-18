@@ -3,12 +3,14 @@ fun main() {
 
     for (i in 1..5) {
         print("Название ингредиента: ")
-        val ingredient = readln()
+        val ingredient = readln().lowercase()
         ingredients.add(ingredient)
     }
 
-    ingredients.sort()
-    ingredients[0] = ingredients.get(0).replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
-    val uniqueIngredients = ingredients.toCollection(LinkedHashSet())
-    print(uniqueIngredients.joinToString(separator = ", "))
+    val uniqueIngredients = ingredients.distinct().sorted().toMutableList()
+    uniqueIngredients[0] = uniqueIngredients[0].replaceFirstChar {
+        if (it.isLowerCase()) it.titlecase() else it.toString()
+    }
+
+    println(uniqueIngredients.joinToString(separator = ", "))
 }
