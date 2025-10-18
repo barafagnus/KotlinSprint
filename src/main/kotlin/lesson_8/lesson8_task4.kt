@@ -3,12 +3,12 @@ fun main() {
     for (ingredient in borschRecipe) println("$ingredient ")
 
     print("Какой ингредиент заменим: ")
-    val ingredient = readln()
+    val ingredient = borschRecipe.indexOf(readln())
 
-    if (ingredient in borschRecipe) {
+    if (ingredient != -1) {
         print("Введите новый ингредиент: ")
         val newIngredient = readln()
-        borschRecipe[borschRecipe.indexOf(ingredient)] = newIngredient
+        borschRecipe[ingredient] = newIngredient
         println("Готово! Вы сохранили следующий список ${borschRecipe.contentToString()}")
     } else println("Такого ингредиента нет")
 }
