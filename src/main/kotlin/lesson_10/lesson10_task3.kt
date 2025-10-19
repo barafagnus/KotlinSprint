@@ -6,14 +6,14 @@ fun main() {
 }
 
 
-val DIGITS = ('0'..'9')
-val SYMBOLS = ('!'..'/') + ' '
-
 fun passwordGenerator(length: Int): String {
+    val digits = ('0'..'9')
+    val symbols = ('!'..'/') + ' '
+
     return buildString {
         repeat(length) {
-            if (it % 2 == 0) append(DIGITS.random())
-            else append(SYMBOLS.random())
+            if (it % 2 == 0) append(digits.random())
+            else append(symbols.random())
         }
     }
 }
