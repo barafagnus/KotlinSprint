@@ -4,9 +4,7 @@ class DailyWeather() {
     var precipitation: Boolean = false
 
     fun showWeather() {
-        println("Температура днем: $daytimeTemperature")
-        println("Температура ночью: $nightTemperature")
-        println("Осадки: ${if (precipitation) "да" else "нет"}")
+        println("t днем: $daytimeTemperature, ночью $nightTemperature, осадки: ${if (precipitation) "да" else "нет"}")
     }
 }
 
