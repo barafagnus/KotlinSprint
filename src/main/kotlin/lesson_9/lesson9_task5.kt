@@ -7,10 +7,8 @@ fun main() {
         ingredients.add(ingredient)
     }
 
-    val uniqueIngredients = ingredients.distinct().sorted().toMutableList()
-    uniqueIngredients[0] = uniqueIngredients[0].replaceFirstChar {
-        if (it.isLowerCase()) it.titlecase() else it.toString()
-    }
+    val uniqueIngredients = ingredients.sorted().toCollection(LinkedHashSet())
+    val message = uniqueIngredients.joinToString(separator = ", ").replaceFirstChar { it.uppercase() }
+    println(message)
 
-    println(uniqueIngredients.joinToString(separator = ", "))
 }
