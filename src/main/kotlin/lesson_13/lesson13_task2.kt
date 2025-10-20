@@ -12,12 +12,7 @@ class User(
 
 fun main() {
 
-    val contact = User(
-        name = "Alex",
-        phone = 79123456789,
-        null
-    )
-
+    val contact = User(name = "Alex", phone = 79123456789)
     contact.showUserInfo()
 
 }
