@@ -5,11 +5,14 @@ fun main() {
     print("Пароль: ")
     val password = readln()
 
-    val token = getToken(login, password)
-    if (token != null) {
-        val shoppingCart = getShoppingCart(token)
-        shoppingCart?.forEach { println(it) }
+    if (authorize(login, password)) {
+        val token = getToken()
+        if (token != null) {
+            val shoppingCart = getShoppingCart(token)
+            shoppingCart?.forEach { println(it) }
+        }
     } else println("Ошибка авторизации")
+
 }
 
 
@@ -24,22 +27,26 @@ var credentials: User? = null
 const val TOKEN_LENGTH = 32
 var generatedTokens = mutableListOf<String>()
 
-fun getToken(authLogin: String, authPassword: String): String? {
+fun authorize(authLogin: String, authPassword: String): Boolean {
+    if (users.any { it.login == authLogin && it.password == authPassword }) {
+        credentials = User(login = authLogin, password = authPassword)
+        return true
+    } else return false
+}
+
+fun getToken(): String? {
     val digits = '0'..'9'
     val lowerCase = 'a'..'z'
     val upperCase = 'A'..'Z'
     val allowedChars = digits + lowerCase + upperCase
 
-    if (users.any { it.login == authLogin && it.password == authPassword }) {
-        credentials = User(login = authLogin, password = authPassword)
-        val token = buildString {
-            repeat(TOKEN_LENGTH) {
-                append(allowedChars.random())
-            }
+    val token = buildString {
+        repeat(TOKEN_LENGTH) {
+            append(allowedChars.random())
         }
-        generatedTokens.add(token)
-        return token
-    } else return null
+    }
+    generatedTokens.add(token)
+    return token
 }
 
 
