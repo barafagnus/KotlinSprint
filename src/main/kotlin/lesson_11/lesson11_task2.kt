@@ -16,7 +16,10 @@ class User2(
         bio = readln()
     }
 
-    fun changePassword(currentPassword: String) {
+    fun changePassword() {
+        print("Введите текущий пароль: ")
+        val currentPassword = readln()
+
         if (currentPassword == password) {
             print("Новый пароль: ")
             password = readln()
@@ -24,7 +27,6 @@ class User2(
         } else println("Неправильный пароль")
     }
 }
-
 
 fun main() {
     val user = User2(
@@ -35,6 +37,6 @@ fun main() {
     )
 
     user.setBio()
-    user.changePassword(user.password)
+    user.changePassword()
     user.getInfo()
 }
