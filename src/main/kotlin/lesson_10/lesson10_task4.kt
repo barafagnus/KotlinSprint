@@ -20,10 +20,10 @@ fun main() {
 }
 
 
-val DICE_RANGE = 1..6
-fun rollTheDice(): Int = DICE_RANGE.random()
+private val DICE_RANGE = 1..6
+private fun rollTheDice(): Int = DICE_RANGE.random()
 
-fun startRound(): Boolean {
+private fun startRound(): Boolean {
     while (true) {
         print("Хотите бросить кости еще раз? ")
         when (readln().lowercase()) {

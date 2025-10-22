@@ -9,5 +9,5 @@ fun main() {
     }
 }
 
-val DICE_RANGE = 1..6
-fun rollTheDice(): Int = DICE_RANGE.random()
+private val DICE_RANGE = 1..6
+private fun rollTheDice(): Int = DICE_RANGE.random()
