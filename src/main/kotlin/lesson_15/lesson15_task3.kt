@@ -1,3 +1,5 @@
+package lesson_15
+
 abstract class ForumMember {
 
     abstract val name: String
@@ -18,15 +20,9 @@ abstract class ForumMember {
 
 }
 
-class FUser(
-    override val name: String
-) : ForumMember() {
+class FUser(override val name: String) : ForumMember()
 
-}
-
-class FAdmin(
-    override val name: String
-) : ForumMember() {
+class FAdmin(override val name: String) : ForumMember() {
 
     fun deleteMessage(messageId: Int) {
         println("$name удалил сообщение $messageId")
