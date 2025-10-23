@@ -1,11 +1,12 @@
+const val KELVIN = 273
+
 class WeatherForecast(
-    _daytimeTemperature: Int,
-    _nightTemperature: Int,
-    _isPrecipitation: Boolean
+    kelvinDayTemperature: Int,
+    nightTemperature: Int,
+    val isPrecipitation: Boolean
 ) {
-    val daytimeTemperature = _daytimeTemperature - 273
-    val nightTemperature = _nightTemperature - 273
-    val isPrecipitation = _isPrecipitation
+    val daytimeTemperature = kelvinDayTemperature - KELVIN
+    val nightTemperature = nightTemperature - KELVIN
 
     fun showWeather() {
         println("t днем: $daytimeTemperature, ночью $nightTemperature, осадки: ${if (isPrecipitation) "да" else "нет"}")
