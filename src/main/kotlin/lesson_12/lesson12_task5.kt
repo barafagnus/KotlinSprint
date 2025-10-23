@@ -1,15 +1,16 @@
 package lesson_12
-
 import kotlin.random.Random
 
+const val KELVIN = 273
+
 class WeatherForecast(
-    _daytimeTemperature: Int,
-    _nightTemperature: Int,
-    _isPrecipitation: Boolean
+    kelvinDayTemperature: Int,
+    kelvinNightTemperature: Int,
+    val isPrecipitation: Boolean
 ) {
-    val daytimeTemperature = _daytimeTemperature - 273
-    val nightTemperature = _nightTemperature - 273
-    val isPrecipitation = _isPrecipitation
+    val daytimeTemperature = kelvinDayTemperature - KELVIN
+    val nightTemperature = kelvinNightTemperature - KELVIN
+
 
     init {
         println("t днем: $daytimeTemperature, ночью $nightTemperature, осадки: ${if (isPrecipitation) "да" else "нет"}")
@@ -20,16 +21,12 @@ class WeatherForecast(
 
 fun main() {
     val temperatureRange = 273..320
-
-    val data = mutableListOf<WeatherForecast>()
-
-    for (i in 1..30) {
-        val weather = WeatherForecast(
-            _daytimeTemperature = temperatureRange.random(),
-            _nightTemperature = temperatureRange.random(),
-            _isPrecipitation = Random.nextBoolean()
+    val data = List(30) {
+        WeatherForecast(
+            temperatureRange.random(),
+            temperatureRange.random(),
+            Random.nextBoolean()
         )
-        data.add(weather)
     }
 
     val averageDaytimeTemperature = data.map { forecast -> forecast.daytimeTemperature }.average()
