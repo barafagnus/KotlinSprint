@@ -5,10 +5,10 @@ class WeatherForecast(
 ) {
     val daytimeTemperature = _daytimeTemperature - 273
     val nightTemperature = _nightTemperature - 273
-    val precipitation = _precipitation
+    val isPrecipitation = _precipitation
 
     init {
-        println("t днем: $daytimeTemperature, ночью $nightTemperature, осадки: ${if (precipitation) "да" else "нет"}")
+        println("t днем: $daytimeTemperature, ночью $nightTemperature, осадки: ${if (isPrecipitation) "да" else "нет"}")
     }
 
 }
