@@ -2,11 +2,11 @@ const val KELVIN = 273
 
 class WeatherForecast(
     kelvinDayTemperature: Int,
-    nightTemperature: Int,
+    kelvinNightTemperature: Int,
     val isPrecipitation: Boolean
 ) {
     val daytimeTemperature = kelvinDayTemperature - KELVIN
-    val nightTemperature = nightTemperature - KELVIN
+    val nightTemperature = kelvinNightTemperature - KELVIN
 
     fun showWeather() {
         println("t днем: $daytimeTemperature, ночью $nightTemperature, осадки: ${if (isPrecipitation) "да" else "нет"}")
