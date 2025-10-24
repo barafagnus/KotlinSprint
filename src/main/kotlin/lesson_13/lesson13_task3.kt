@@ -17,9 +17,12 @@ fun main() {
         Person("Steve", 79000000001),
         Person("Kate", 79000000002, "null"),
         Person("Serhio", 79000000003, "Reddit"),
-        Person("Bob", 79000000004, "Google"),
+        Person("Serhio 2", 79000000004, "Reddit"),
+        Person("Bob", 79000000005, "Google"),
     )
 
-    contacts.forEach { if (it.company != null) println(it.company) }
+    contacts.mapNotNull { it.company }
+        .distinct()
+        .forEach { println(it) }
 
 }
