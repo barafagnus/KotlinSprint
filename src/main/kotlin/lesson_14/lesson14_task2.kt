@@ -1,8 +1,8 @@
 package lesson_14
 
 open class Liner2(
-    val speed: Int = 10,
-    val capacity: Int = 20
+    open val speed: Int = 10,
+    open val capacity: Int = 20
 ) {
 
     open fun loading() {
@@ -16,8 +16,8 @@ open class Liner2(
 }
 
 class IceBreaker2(
-    speed: Int = 5,
-    capacity: Int = 10,
+    override val speed: Int = 5,
+    override val capacity: Int = 10,
     val canChopIce: Boolean = true
 ) : Liner2(speed, capacity) {
 
@@ -32,8 +32,8 @@ class IceBreaker2(
 }
 
 class Cargo2(
-    speed: Int = 5,
-    capacity: Int = 40
+    override val speed: Int = 5,
+    override val capacity: Int = 40
 ) : Liner2(speed, capacity) {
 
     override fun loading() {
