@@ -1,6 +1,6 @@
 package lesson_15
 
-interface Search {
+interface Searchable {
     fun findComponent() { println("Выполняется поиск") }
 }
 
@@ -12,7 +12,7 @@ abstract class Product(
 class Instrument(
     name: String,
     amount: Int
-) : Product(name, amount), Search
+) : Product(name, amount), Searchable
 
 
 class Component(
