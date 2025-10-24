@@ -24,7 +24,7 @@ fun main() {
         readLine()?.toLong()
 
     } catch (e: NumberFormatException) {
-        println(e)
+        println(e.javaClass.simpleName)
         print("Введите номер: ")
         readLine()?.filter { it.isDigit() }?.toLongOrNull()
     }
