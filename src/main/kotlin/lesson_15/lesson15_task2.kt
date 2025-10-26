@@ -4,11 +4,12 @@ class Temperature(val temperature: Double) : WeatherStationStats()
 
 class PrecipitationAmount(val precipitationAmount: Double) : WeatherStationStats()
 
-class WeatherServer() {
+class WeatherServer {
     fun sendMessage(weatherStationStats: WeatherStationStats) {
         when (weatherStationStats) {
             is Temperature -> println("Temperature: ${weatherStationStats.temperature}")
             is PrecipitationAmount -> println("Precipitations: ${weatherStationStats.precipitationAmount}")
+            else -> println("Неверные данные")
         }
     }
 }
