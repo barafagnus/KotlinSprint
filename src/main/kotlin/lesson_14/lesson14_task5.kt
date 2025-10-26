@@ -1,4 +1,4 @@
-import kotlin.collections.forEach
+package lesson_14
 
 class Chat {
 
@@ -35,8 +35,8 @@ class Chat {
 }
 
 open class Message(
-    val author: String,
-    val text: String
+    open val author: String,
+    open val text: String
 ) {
     val id: Int
 
@@ -51,8 +51,8 @@ open class Message(
 }
 
 class ChildMessage(
-    author: String,
-    text: String,
+    override val author: String,
+    override val text: String,
     val parentMessageId: Int
 ) : Message(author, text)
 
