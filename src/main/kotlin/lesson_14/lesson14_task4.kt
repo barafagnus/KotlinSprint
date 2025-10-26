@@ -1,22 +1,22 @@
 package lesson_14
 
 abstract class CelestialBody(
-    val name: String,
-    val hasAtmosphere: Boolean,
-    val isLandable: Boolean
+    open val name: String,
+    open val hasAtmosphere: Boolean,
+    open val isLandable: Boolean
 )
 
 class Planet(
-    name: String,
-    hasAtmosphere: Boolean,
-    isLandable: Boolean,
+    override val name: String,
+    override val hasAtmosphere: Boolean,
+    override val isLandable: Boolean,
     val satellites: List<Satellite>
 ) : CelestialBody(name, hasAtmosphere, isLandable)
 
 class Satellite(
-    name: String,
-    hasAtmosphere: Boolean,
-    isLandable: Boolean
+    override val name: String,
+    override val hasAtmosphere: Boolean,
+    override val isLandable: Boolean
 ) : CelestialBody(name, hasAtmosphere, isLandable)
 
 fun main() {
