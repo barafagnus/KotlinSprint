@@ -1,8 +1,6 @@
 package lesson_15
 
-abstract class ForumMember {
-
-    abstract val name: String
+abstract class ForumMember(val name: String) {
 
     companion object {
         private var counter = 1
@@ -20,9 +18,9 @@ abstract class ForumMember {
 
 }
 
-class FUser(override val name: String) : ForumMember()
+class RegularUser(name: String) : ForumMember(name)
 
-class FAdmin(override val name: String) : ForumMember() {
+class Administrator(name: String) : ForumMember(name) {
 
     fun deleteMessage(messageId: Int) {
         println("$name удалил сообщение $messageId")
@@ -36,13 +34,13 @@ class FAdmin(override val name: String) : ForumMember() {
 
 fun main() {
 
-    val user = FUser("User")
+    val user = RegularUser("User")
     user.sendMessage("Hello")
     user.readForum()
 
     println()
 
-    val admin = FAdmin("Admin")
+    val admin = Administrator("Admin")
     admin.sendMessage("Hi")
     admin.readForum()
     admin.deleteUser(user.memberId)
