@@ -2,15 +2,8 @@ package lesson_15
 
 interface Movable {
 
-    var currentPassengers: Int
-    val maxPassengers: Int
-
     fun startMoving() {
-        when {
-            currentPassengers > maxPassengers ->
-                println("${javaClass.simpleName} Слишком много пассажиров, машина не может ехать")
-            else -> println("${javaClass.simpleName} Машина поехала")
-        }
+        println("${javaClass.simpleName} Машина поехала")
     }
 
     fun stopMoving() {
@@ -25,13 +18,8 @@ interface PassengerTransport {
     var currentPassengers: Int
 
     fun loadPassengers(passengers: Int) {
-        when {
-            passengers <= maxPassengers -> {
-                currentPassengers = passengers
-                println("${javaClass.simpleName} В машину загружено $currentPassengers человек")
-            }
-            else -> println("${javaClass.simpleName} Не хватает ${passengers - currentPassengers} мест")
-        }
+        currentPassengers = (currentPassengers + passengers).coerceAtMost(maxPassengers)
+        println("${javaClass.simpleName} В машину загружено $currentPassengers человек")
     }
 
     fun unloadPassengers() {
@@ -49,8 +37,8 @@ interface CargoTransport {
     var currentWeight: Double
 
     fun loadCargo(weight: Double) {
-        if (weight <= maxWeight) currentWeight = weight
-        else println("${javaClass.simpleName} Перегруз в ${weight - maxWeight} кг")
+        currentWeight = (currentWeight + weight).coerceAtMost(maxWeight)
+        println("${javaClass.simpleName} В машину загружен груз весом $currentWeight кг")
     }
 
     fun unloadCargo() {
@@ -61,7 +49,7 @@ interface CargoTransport {
 }
 
 
-class Truck() : CargoTransport, PassengerTransport, Movable {
+class Truck : CargoTransport, PassengerTransport, Movable {
     override var currentPassengers: Int = 0
     override val maxPassengers: Int = 1
     override var currentWeight: Double = 0.0
@@ -86,7 +74,7 @@ fun main() {
     println()
 
     val passengerCar = PassengerCar()
-    passengerCar.loadPassengers(3)
+    passengerCar.loadPassengers(4)
     passengerCar.startMoving()
     passengerCar.stopMoving()
     passengerCar.unloadPassengers()
