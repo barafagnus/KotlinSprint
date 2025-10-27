@@ -2,15 +2,18 @@ package lesson_14
 
 class Chat {
 
-    private val messages = mutableListOf<Message>()
+    val messages = mutableListOf<Message>()
+    private var messageId: Int = 0
 
     fun addMessage(author: String, text: String) {
-        messages.add(Message(author, text))
+        messageId++
+        messages.add(Message(author, text, messageId))
     }
 
     fun addThreadMessage(author: String, text: String, parentMessageId: Int) {
         if (messages.any { it.id == parentMessageId }) {
-            messages.add(ChildMessage(author, text, parentMessageId))
+            messageId++
+            messages.add(ChildMessage(author, text, messageId, parentMessageId))
 
         } else {
             println("Error: сообщение с id $parentMessageId не найдено")
@@ -36,25 +39,16 @@ class Chat {
 
 open class Message(
     open val author: String,
-    open val text: String
-) {
-    val id: Int
-
-    companion object {
-        var idCounter = 0
-    }
-
-    init {
-        idCounter++
-        id = idCounter
-    }
-}
+    open val text: String,
+    open val id: Int
+)
 
 class ChildMessage(
     override val author: String,
     override val text: String,
+    override val id: Int,
     val parentMessageId: Int
-) : Message(author, text)
+) : Message(author, text, id)
 
 fun main() {
 
@@ -64,7 +58,6 @@ fun main() {
     chat.addThreadMessage("John", "(to Alex) Nothing...", 1)
     chat.addMessage("Steve", "Good morning.")
     chat.addThreadMessage("Serhio", "(to Steve) too.", 4)
-
     chat.printChat()
 
 }
