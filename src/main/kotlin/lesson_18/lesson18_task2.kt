@@ -3,9 +3,7 @@ package lesson_18
 abstract class Dice {
     abstract val range: IntRange
 
-    open fun throwDice() {
-        println("Бросаем кубик")
-    }
+    abstract fun throwDice()
 }
 
 class FourDice : Dice() {
