@@ -1,3 +1,5 @@
+package lesson_18
+
 class Screen {
     fun drawCircle(x: Int, y: Int): String = "Круг в x=$x y=$y"
     fun drawCircle(x: Float, y: Float): String = "Круг в x=$x y=$y"
@@ -8,7 +10,6 @@ class Screen {
     fun drawDot(x: Int, y: Int): String = "Точка в x=$x y=$y"
     fun drawDot(x: Float, y: Float): String = "Точка в x=$x y=$y"
 }
-
 
 fun main() {
     val screen = Screen()
