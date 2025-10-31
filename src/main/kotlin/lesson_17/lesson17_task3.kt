@@ -1,6 +1,6 @@
 class Folder(
     name: String,
-    val amountOfFiles: Int,
+    amountOfFiles: Int,
     private var isSecret: Boolean
 ) {
 
@@ -8,11 +8,12 @@ class Folder(
         get() = if (isSecret) "Скрытая папка, количество файлов - 0"
         else "$field, количество файлов - $amountOfFiles"
 
+    val amountOfFiles: Int = amountOfFiles
+        get() = field
+
     fun setIsSecret(isSecret: Boolean) {
         this.isSecret = isSecret
     }
-
-    fun getAmountOfFiles() = amountOfFiles
 
 }
 
